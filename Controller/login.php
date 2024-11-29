@@ -19,28 +19,16 @@
 
                 if($checkPass && $user['enabled']) {
                     $_SESSION["auth"] = true;
-                    header('location: index.php');
-                } elseif (!$user['enabled']) {
+                    header('Location: index.php');
+                } elseif (!$user['enabled'] && $checkPass) {
                     $errors[] = 'Account deactivated';
                 } elseif (!$checkPass) {
                     $errors[] = "Wrong Password";
                 } else {
                     $errors[] = "invalid auth";
                 }
-
-
-                // if (is_array($user)) {
-                //     $checkPass = password_verify($password, $user["password"]);
-                //     if($checkPass === true) 
-                //     {     
-                //     } else {
-                //         $errors[] = "Wrong password";
-                //     }
-                // } else {
-                //     $errors[] = "Incorrect username";       
-                // } 
             } else {
-                $errors[] = "Empty usernam/password";
+                $errors[] = "Empty username/password";
             }
         }
 

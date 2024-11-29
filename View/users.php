@@ -3,6 +3,10 @@
 </div>
 
 <div class="row">
+    <a
+    href="index.php?component=users&action=create">
+        <button type="submit" class="btn btn-primary" name="create_button" id="create_button" >create user</button>
+    </a>
     <table class="table">
         <thead>
         <tr>
@@ -20,20 +24,22 @@
                     <td><?php echo $user['username']; ?></td>
                     <td>
                         <a
-                            href="index.php?component=users&action=toggle_enabled&id=<?php echo $user['id'];?>"
-                        >
+                            href="index.php?component=users&action=toggle_enabled&id=<?php echo $user['id'];?>">
                             <i
                                 class="fa-solid <?php echo ($user['enabled'])
                                 ? 'fa-circle-check text-success'
-                                : 'fa-circle-xmark text-danger' ?>"
-                            >
-
+                                : 'fa-circle-xmark text-danger' ?>">
                             </i>
                         </a>
                     </td>
                     <td>
-                        <a href="index.php?component=users&action=delete&id=<?php echo $user['id'];?>">
+                        <a href="index.php?component=users&action=delete&id=<?php echo $user['id'];?> " 
+                        onclick='return confirm("Etes-vous sûr de vouloir supprimer?");'
+                        >
                             <i class="fa-solid fa-trash"></i>
+                        </a>
+                        <a href="index.php?component=user&action=modify&id=<?php echo $user['id'];?>">
+                            <i class="fa-solid fa-pen"></i>
                         </a>
                     </td>
                 </tr>

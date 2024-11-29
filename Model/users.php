@@ -1,4 +1,7 @@
 <?php   
+
+
+
 function getAll(PDO $pdo)
 {
     try{
@@ -21,15 +24,19 @@ function toggle_enabled(PDO $pdo, int $id) : void
     }
 }
 
-function deleteUser(PDO $pdo, int $id) : void
+function deleteUser(PDO $pdo, int $id)
 {
     try{
-        $res = $pdo->prepare('');
+        $res = $pdo->prepare('DELETE FROM `users` WHERE `id` = :id');
         $res->bindParam(':id', $id, PDO::PARAM_INT); 
         $res->execute();
-    } catch (Exception $e) {
-        $errors[] = "Deletion issue";
+    } catch (PDOException $e) {
+       return $e->getMessage();
     }
 }
+
+
+
+
 
 ?>

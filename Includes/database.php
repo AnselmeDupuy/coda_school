@@ -7,5 +7,4 @@
         $errors[] = "Erreur de connexion à la BDD (GET): {$e->getMessage()}";
     }
 
-
 ?>
